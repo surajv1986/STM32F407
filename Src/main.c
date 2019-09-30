@@ -55,8 +55,8 @@ ADC_HandleTypeDef hadc1;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
-static int MX_ADC1_read_values(void);
-static void MX_LED_Control(uint8_t light_status);
+static uint32_t MX_ADC1_read_values(void);
+static void MX_LED_Control(uint32_t light_status);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -246,7 +246,7 @@ static void MX_GPIO_Init(void)
 	* @param none
 	* @retval none
   */
-static int MX_ADC1_read_values(void)
+static uint32_t MX_ADC1_read_values(void)
 {
 	HAL_StatusTypeDef adc1;
 	uint32_t  timeout_ts = 100;
@@ -276,7 +276,7 @@ static int MX_ADC1_read_values(void)
 	* @param uint8_t value specifying status of ambient light
 	* @return none
 	*/
-static void MX_LED_Control(uint8_t light_status)
+static void MX_LED_Control(uint32_t light_status)
 {
 	
 	uint32_t threshold = 100;
