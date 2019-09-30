@@ -278,10 +278,12 @@ static int MX_ADC1_read_values(void)
 	*/
 static void MX_LED_Control(uint8_t light_status)
 {
-	if (light_status == 0) {
+	
+	uint32_t threshold = 100;
+	if (light_status < threshold) {
 		/* Turn off LED Connected to Pin A10 */
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-	} else if (light_status == 1) {
+	} else if (light_status > threshold) {
 		/* Turn on LED Connected to Pin A10 */
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
 	}
